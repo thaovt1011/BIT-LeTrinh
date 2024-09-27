@@ -1,0 +1,47 @@
+.nav-tabs {
+  background-color: white;
+  // padding: 5px 5px 0;
+  border-radius: 10px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  // border-bottom: 1px solid #eeeeee;
+  height: 44px;
+  position: sticky;
+  top: -25px;
+  z-index: 50;
+}
+
+ul {
+  display: flex;
+  width: 100%;
+}
+
+li {
+  border-radius: 5px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  width: 100%;
+  padding: 10px 0px;
+  position: relative;
+  background: white;
+  cursor: pointer;
+  height: 24px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex: 1;
+  font-weight: 600;
+  min-width: 0;
+  position: relative;
+  user-select: none;
+  height: 100%;
+}
+
+.underline {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: black;
+}
