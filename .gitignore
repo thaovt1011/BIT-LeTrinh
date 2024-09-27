@@ -13,13 +13,14 @@ pids
 *.pid.lock
 
 # Dependency directories
-T-CoffeeShop/node_modules
-T-CoffeeShop/database/*
-T-CoffeeShop/docker-compose.yml
+node_modules
+database/*
+docker-compose.yml
 docker-compose.yml
 
 # Optional npm cache directory
 .npm
+tmp
 
 # Optional eslint cache
 .eslintcache
@@ -31,7 +32,7 @@ docker-compose.yml
 .yarn-integrity
 
 # dotenv environment variables file
-# .env
+.env
 
 # Misc
 .DS_Store
