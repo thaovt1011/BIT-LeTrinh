@@ -50,9 +50,9 @@ export function calcFinalPrice(product: Product, options?: SelectedOptions) {
 // export function getDummyImage(filename: string) {
 //   return `https://stc-zmp.zadn.vn/templates/zaui-coffee/dummy/${filename}`;
 // }
-export function getDummyImage(filename: string) {
-  return `https://theme.hstatic.net/200000538679/1000910677/14/${filename}?v=706`;
-}
+// export function getDummyImage(filename: string) {
+//   return `https://phuminhtam.com.vn/wp-content/uploads/2024/05/${filename}`;
+// }
 
 export function isIdentical(
   option1: SelectedOptions,

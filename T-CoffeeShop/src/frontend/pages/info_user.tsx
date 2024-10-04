@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { userCurrentState, userCurrentAtom } from "state";
 import { Header, Modal, Icon, Box, Text } from 'zmp-ui';
+import { FaEdit } from "react-icons/fa";
 
 
 const InfoUserPage: React.FC = () => {
@@ -49,7 +50,7 @@ const InfoUserPage: React.FC = () => {
         title="Cám ơn bạn"
         >
         <Box p={4}>
-          <Text className="text-center">Cám ơn bạn đã đánh giá!</Text>
+          <Text className="text-center">Cám ơn bạn đã thay đổi!</Text>
           <Text className="text-center">Tên: {username}</Text> 
           <Text className="text-center">Số điện thoại: {phone}</Text> 
         </Box>
@@ -60,7 +61,7 @@ const InfoUserPage: React.FC = () => {
                 <form onSubmit={handleEditCustomer} style={styles.form}>
                     <div style={styles.formGroup}>
                         <label htmlFor="username" style={styles.label}>Tên người dùng
-                        <Icon icon="zi-edit" size={20} />
+                        <FaEdit  size={20} />
 
                         </label>
                         <input

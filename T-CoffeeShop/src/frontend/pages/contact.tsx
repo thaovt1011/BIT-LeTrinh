@@ -7,7 +7,7 @@ const ContactPage: FC = () => {
 
   useEffect(() => {
     if (iframeRef.current) {
-      iframeRef.current.src = "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7831.8430351249035!2d106.445097!3d11.044511!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310b2de0be49d617%3A0xa1ec21246469499c!2zMzc4IFbDtSBWxINuIMSQaeG7gXUsIFRydW5nIEzhuq1wIFRoxrDhu6NuZywgQ-G7pyBDaGksIEjhu5MgQ2jDrSBNaW5oLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2sus!4v1725435185437!5m2!1svi!2sus";
+      iframeRef.current.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1232.5136104807154!2d106.62907371719339!3d10.840971709325483!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752bd5bfb32677%3A0x4f017048fcb754c5!2sC%C3%94NG%20TY%20TNHH%20TM%20DV%20PH%C3%9A%20MINH%20T%C3%82M!5e1!3m2!1svi!2s!4v1727689897724!5m2!1svi!2s";
     }
   }, []);
 
@@ -17,13 +17,15 @@ const ContactPage: FC = () => {
       <Page>
         <Box className="m-4 space-y-4">
           <Box className="space-y-2">
-          <Text.Title>Thông tin liên hệ</Text.Title>
-          <Text>Địa chỉ: 378 Võ Văn Điều, Ấp Trung Bình, Xã Trung Lập Thượng, Huyện Củ Chi, Thành Phố Hồ Chí Minh</Text>
-          <Text>Số điện thoại: <a href="tel:02822611111" style={{ textDecoration: 'underline' }}>028 2261 1111</a></Text>
-          <Text>Email: <a href="mailto:ctyletrinh@gmail.com" style={{ textDecoration: 'underline' }}>ctyletrinh@gmail.com</a></Text>
+          <Text.Title><strong>Thông tin liên hệ</strong></Text.Title>
+          <Text><strong>Địa chỉ:</strong> 481/83 Nguyễn Văn Quá, Tổ 11, KP8, Phường Đông Hưng Thuận, Quận 12, TP.HCM</Text>
+          <Text><strong>Số điện thoại hotline/zalo:</strong> <a href="tel:02822611111" style={{ textDecoration: 'underline' }}>028.3715.5143</a></Text>
+          <Text><strong>Số điện thoại văn phòng:</strong> <a href="tel:02822611111" style={{ textDecoration: 'underline' }}>0937.355.143</a></Text>
+          <Text><strong>Email 1:</strong> <a href="mailto:ctyletrinh@gmail.com" style={{ textDecoration: 'underline' }}>phuminhtam@phuminhtam.com.vn</a></Text>
+          <Text><strong>Email 2:</strong>  <a href="mailto:ctyletrinh@gmail.com" style={{ textDecoration: 'underline' }}> phuminhtampmt@gmail.com</a></Text>
         </Box>
         <Box className="space-y-2">
-          <Text.Title>Bản đồ</Text.Title>
+          <Text.Title><strong>Bản đồ</strong></Text.Title>
           <iframe
             ref={iframeRef}
             style={{ 

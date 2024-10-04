@@ -6,8 +6,6 @@ export const ConfirmOrder: FC = () => {
         <Page className="flex flex-col">
           <Header title="Kết quả thanh toán NEW" />
           
-
-
         </Page>
       );
 

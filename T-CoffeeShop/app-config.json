@@ -1,6 +1,6 @@
 {
   "app": {
-    "title": "LeTrinh",
+    "title": "PhuMinhTam",
     "headerColor": "",
     "textColor": "black",
     "statusBarColor": "#ffffff",
@@ -23,7 +23,7 @@
     "/404"
   ],
   "template": {
-    "primaryColor": "#006af5",
+    "primaryColor": "#FF0000",
     "greenColor": "green",
     "prefixCurrencySymbol": false,
     "currencySymbol": "đ",

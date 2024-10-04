@@ -21,7 +21,7 @@ export const PersonPicker: FC = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState();
 
-  if (!userCurrent.phone_number) {
+  if (!userCurrent.phone_number) {  
     return <RequestPersonPickerPhone />;
   }
 

@@ -2,19 +2,15 @@ import { ProductItem } from "components/product/item";
 import React, { FC, Suspense } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
-import {
-  categoriesState,
-  productsByCategoryState,
-  selectedCategoryIdState,
-} from "state";
+import { categoriesState, productsByCategoryState, selectedCategoryIdState,} from "state";
 import { Box, Header, Page, Tabs, Text } from "zmp-ui";
 
 const CategoryPicker: FC = () => {
   const categories = useRecoilValue(categoriesState);
   // fix
   const sortedCategories = [...categories].sort((a, b) => {
-    if (a.name === "Wangcha") return -1;
-    if (b.name === "Wangcha") return 1;
+    if (a.name === "Đậu") return -1;
+    if (b.name === "Đậu") return 1;
     return 0;
   })
   const navigator = useNavigate();
@@ -33,12 +29,7 @@ const CategoryPicker: FC = () => {
         <Tabs.Tab
           key={category.id}
           label={
-            <span
-              className=""
-              onClick={() => {
-                setSelectedCategory(category.id);
-              }}
-            >
+            <span className="" onClick={() => { setSelectedCategory(category.id); }}>
               {category.name}
             </span>
           }
@@ -66,7 +57,7 @@ const CategoryProducts: FC<{ categoryId: string }> = ({ categoryId }) => {
     );
   }
   return (
-    <Box className="bg-background grid grid-cols-2 gap-4 p-4">
+    <Box className="bg-background grid grid-cols-2 gap-5 p-5">
       {productsByCategory.map((product) => (
         <div>
           <ProductItem key={product.id} product={product} />

@@ -7,6 +7,8 @@ import { useSetRecoilState, useRecoilValue } from "recoil";
 import { selectedAddressState } from "state";
 import { OrderService } from "api/services/order.service";
 import { userState } from "state";
+import { MdNoteAdd } from "react-icons/md";
+import { FaLocationDot } from "react-icons/fa6";
 
 export const NewAddress: React.FC = () => {
   const navigate = useNavigate();
@@ -42,10 +44,10 @@ export const NewAddress: React.FC = () => {
       <Header
         title="Thêm địa chỉ mới"
         showBackIcon={true}
+        backIcon={<FaLocationDot size={20} />}
         onBackClick={handleBackClick}
       />
-      <Box
-        className="section-container"
+      <Box className="section-container"
         style={{ backgroundColor: "#f0f4f7", padding: "10px" }}
       >
         <CustomSelect onSaveAddress={handleSaveAddress} />
@@ -54,6 +56,7 @@ export const NewAddress: React.FC = () => {
       <Page
         className="section-container"
         style={{ backgroundColor: "#f0f4f7"}}
+        
       >
         <Box className="px-4 py-3">
           <Text.Header>Địa chỉ đã lưu</Text.Header>
@@ -65,7 +68,7 @@ export const NewAddress: React.FC = () => {
             <ListRenderer
               items={Array.from(new Set(selectedAddresses)) 
                 .map(address => ({
-                  left: <Icon icon="zi-location" className="my-auto" />,
+                  left: <FaLocationDot size={20} className="my-auto" />,
                   right: address,
                 }))
                 .sort((a, b) => selectedAddresses.indexOf(a.right) - selectedAddresses.indexOf(b.right)).reverse()} // Sắp xếp và đảo ngược

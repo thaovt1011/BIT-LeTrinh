@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { matchStatusBarColor } from "utils/device";
 import { EventName, events, Payment } from "zmp-sdk";
 import { useNavigate, useSnackbar } from "zmp-ui";
+import { FaInfoCircle } from "react-icons/fa";
 
 export function useMatchStatusTextColor(visible?: boolean) {
   const changedRef = useRef(false);
@@ -38,7 +39,7 @@ export function useToBeImplemented(props?: object) {
   return () =>
     snackbar.openSnackbar({
       position: "top",
-
+      prefixIcon: FaInfoCircle as any ,
       type: "success",
       text: "Chức năng dành cho các bên tích hợp phát triển...",
       ...props,

@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const endpoint = "https://graph.zalo.me/v2.0/me/info";
-const secretKey = "yp1hGgnWe0eE55rd2OBX";
+
 
 
 export const UserInforService = {

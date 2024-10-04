@@ -4,6 +4,7 @@ import { selectedDeliveryTimeState } from "state";
 import { displayDate, displayHalfAnHourTimeRange } from "utils/date";
 import { matchStatusBarColor } from "utils/device";
 import { Picker } from "zmp-ui";
+import { IoMdCloseCircle } from "react-icons/io";
 
 export const TimePicker: FC = () => {
   const [date, setDate] = useState(+new Date());

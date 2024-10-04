@@ -1,5 +1,6 @@
 import React, { ReactNode, useMemo, useState } from "react";
 import { Box, Button, Icon, Text } from "zmp-ui";
+import { FaChevronCircleDown } from "react-icons/fa";
 
 interface ListRendererProps<T> {
   title?: string;
@@ -52,7 +53,7 @@ export function ListRenderer<T>({
           <Button
             onClick={() => setIsCollapsed(false)}
             fullWidth
-            suffixIcon={<Icon icon="zi-chevron-down" />}
+            suffixIcon={<FaChevronCircleDown className="my-1" size={20}/>}
             variant="tertiary"
             type="neutral"
           >

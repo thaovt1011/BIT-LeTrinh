@@ -9,6 +9,10 @@ import { useRecoilState } from "recoil";
 import { orderNoteState } from "state";
 import { DiscountPicker } from "./discount-picker";
 import { HiGift } from "react-icons/hi";
+//import icon
+import { FaLocationDot, FaClock  } from "react-icons/fa6";
+import { FaUser, FaChevronCircleRight, FaChevronCircleDown } from "react-icons/fa";
+import { MdNoteAdd } from "react-icons/md";
 
 export const Delivery: FC = () => {
   const [note, setNote] = useRecoilState(orderNoteState);
@@ -19,11 +23,11 @@ export const Delivery: FC = () => {
       <ListRenderer
         items={[
           {
-            left: <Icon icon="zi-location" className="my-auto" />,
-            right: <RequestStorePickerLocation />,
+            left: <FaLocationDot  className="my-auto" size={20}/>,
+            right: (<RequestStorePickerLocation />),
           },
           {
-            left: <Icon icon="zi-clock-1" className="my-auto" />,
+            left: <FaClock className="my-auto" size={20}/>,
             right: (
               <Box flex className="space-x-2">
                 <Box className="flex-1 space-y-[2px]">
@@ -32,16 +36,16 @@ export const Delivery: FC = () => {
                     Thời gian nhận hàng
                   </Text>
                 </Box>
-                <Icon icon="zi-chevron-right" />
+                <FaChevronCircleRight size={20}/>
               </Box>
             ),
           },
 
           {
-            left: <Icon icon="zi-user" className="my-auto" />,
+            left: <FaUser  className="my-auto" size={20}/>,
             right: (
               <Suspense fallback={<RequestPersonPickerPhone />}>
-                <PersonPicker />
+                <PersonPicker/>
               </Suspense>
             ),
           },
@@ -50,7 +54,7 @@ export const Delivery: FC = () => {
             right: <DiscountPicker />,
           },
           {
-            left: <Icon icon="zi-note" className="my-auto" />,
+            left: <MdNoteAdd size={20} className="my-auto" />,
             right: (
               <Box flex>
                 <ElasticTextarea
@@ -65,6 +69,7 @@ export const Delivery: FC = () => {
           },
         ]}
         limit={4}
+        
         renderLeft={(item) => item.left}
         renderRight={(item) => item.right}
       />

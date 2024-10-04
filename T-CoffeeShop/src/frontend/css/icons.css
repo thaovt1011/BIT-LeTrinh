@@ -31,13 +31,16 @@
 
 /* ZMP Icons Font (for iOS theme) */
 @font-face {
-  font-family: "ZMP Icons";
+  font-family: 'ZMP Icons';
   font-style: normal;
   font-weight: 400;
-  src:
-    url("//h5.zdn.vn/static/fonts/ZMPIcons-Regular-v2.woff2") format("woff2"),
-    url("//h5.zdn.vn/static/fonts/ZMPIcons-Regular-v2.woff") format("woff"),
-    url("//h5.zdn.vn/static/fonts/ZMPIcons-Regular-v2.ttf") format("truetype");
+  src: url("https://h5.zdn.vn/static/fonts/ZMPIcons-Regular-v3.woff2");
+  src: url("https://h5.zdn.vn/static/fonts/ZMPIcons-Regular-v3.woff2")
+          format("woff2"),
+      url("https://h5.zdn.vn/static/fonts/ZMPIcons-Regular-v3.woff")
+          format("woff"),
+      url("https://h5.zdn.vn/static/fonts/ZMPIcons-Regular-v3.ttf")
+          format("truetype");
 }
 .zmp-icons {
   font-family: "ZMP Icons";

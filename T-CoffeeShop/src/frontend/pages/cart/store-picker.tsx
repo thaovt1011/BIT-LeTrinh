@@ -3,6 +3,7 @@ import React, { FC } from "react";
 import { useRecoilState } from "recoil"; 
 import { selectedAddressState } from "state"; 
 import { useNavigate } from "react-router-dom";
+import { FaChevronCircleRight } from "react-icons/fa";
 
 export const RequestStorePickerLocation: FC = () => {
   const [selectedAddress, setSelectedAddress] = useRecoilState(selectedAddressState); 

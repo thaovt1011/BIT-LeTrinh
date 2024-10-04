@@ -1,4 +1,5 @@
 import React, { FC, MouseEventHandler, ReactNode } from "react";
+import { FaChevronCircleRight } from "react-icons/fa";
 import { Box, Icon, Text } from "zmp-ui";
 
 export interface ListItemProps {
@@ -19,7 +20,7 @@ export const ListItem: FC<ListItemProps> = ({ title, subtitle, onClick }) => {
           {subtitle}
         </Text>
       </Box>
-      <Icon icon="zi-chevron-right" />
+      { <FaChevronCircleRight className="my-auto" size={20}/> }
     </Box>
   );
 };

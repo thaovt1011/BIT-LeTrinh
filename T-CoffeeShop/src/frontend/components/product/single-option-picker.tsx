@@ -21,7 +21,7 @@ export const SingleOptionPicker: FC<{
         defaultValue={"m"}
         onChange={(selectedOption: string) => {
           onChange(selectedOption);
-        }}
+        }} 
       />
     </Box>
   );

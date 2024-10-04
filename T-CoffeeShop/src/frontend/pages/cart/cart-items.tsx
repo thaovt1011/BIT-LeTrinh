@@ -60,8 +60,7 @@ export const CartItems: FC = () => {
       ) : (
         <Text
           className="bg-background rounded-xl py-8 px-4 text-center text-gray"
-          size="large"
-        >
+          size="large">
           Không có sản phẩm trong giỏ hàng
         </Text>
       )}

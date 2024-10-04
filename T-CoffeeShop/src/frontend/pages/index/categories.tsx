@@ -17,12 +17,13 @@ export const Categories: FC = () => {
   };
 
   const sortedCategories = [...categories].sort((a, b) => {
-    if (a.name === "Wangcha") return -1;
-    if (b.name === "Wangcha") return 1;
+    if (a.name === "Đậu") return -1;
+    if (b.name === "Đậu") return 1;
     return 0;
   })
+  
   return (
-    <Box className="bg-white grid grid-cols-5 gap-4 p-4">
+    <Box className="bg-white grid grid-cols-5 gap-5 p-5">
       {sortedCategories?.map((category, i) => (
         <div
           key={i}

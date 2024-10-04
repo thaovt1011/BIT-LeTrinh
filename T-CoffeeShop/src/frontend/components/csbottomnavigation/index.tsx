@@ -15,6 +15,7 @@ import {
   HiTemplate,
   HiUserCircle,
 } from "react-icons/hi";
+import { FaUserTie, FaStore  } from "react-icons/fa";
 import { MenuItem } from "types/menu";
 import { Box } from "zmp-ui";
 import { cartState } from "../../state";
@@ -23,43 +24,43 @@ import { useRecoilValue } from "recoil";
 const tabs: Record<string, any> = {
   client: {
     "/": {
-      label: "Trang chủ",
-      icon: <HiHome size={28} className="inline" />,
+      // label: "Trang chủ",
+      icon: <HiHome size={30} className="inline" />,
     },
     "/notification": {
-      label: "Thông báo",
-      icon: <HiBell size={28} className="inline" />,
+      // label: "Thông báo",
+      icon: <HiBell size={30} className="inline" />,
     },
     "/cart": {
-      label: "Giỏ hàng",
-      icon: <HiShoppingCart size={28} className="inline" />,
+      // label: "Giỏ hàng",
+      icon: <HiShoppingCart size={30} className="inline" />,
     },
     "/profile": {
-      label: "Cá nhân",
-      icon: <HiUserCircle size={28} className="inline" />,
+      // label: "Cá nhân",
+      icon: <HiUserCircle size={30} className="inline" />,
     },
   },
   admin: {
     "/admin/dashboard": {
-      label: "Dashboard",
-      icon: <HiTemplate size={28} className="inline" />,
+      // label: "Dashboard",
+      icon: <HiTemplate size={30} className="inline" />,
     },
     "/admin/product": {
-      label: "Sản phẩm",
-      icon: <HiArchive size={28} className="inline" />,
+      // label: "Sản phẩm",
+      icon: <FaStore  size={30} className="inline" />,
     },
     "/admin/order": {
-      label: "Đơn hàng",
-      icon: <HiDocumentDuplicate size={28} className="inline" />,
+      // label: "Đơn hàng",
+      icon: <HiShoppingCart size={30} className="inline" />,
     },
     "/admin/customer": {
-      label: "Khách hàng",
-      icon: <HiIdentification size={28} className="inline" />,
+      // label: "Khách hàng",
+      icon: <FaUserTie  size={30} className="inline" />,
     },
 
     "/admin/discount": {
-      label: "Khuyến mãi",
-      icon: <HiGift size={28} className="inline" />,
+      // label: "Khuyến mãi",
+      icon: <HiGift size={30} className="inline" />,
     },
   },
 };
@@ -74,14 +75,14 @@ export const CSBottomNavigation: FC = () => {
   // tab["/cart"].notify = cartItem.length;
 
   return (
-    <Box className="sticky bg-white bottom-0 w-full py-5 shadow-lg z-50 overflow-hidden">
-      <div className="relative px-8 flex justify-between">
+    <Box className="sticky bg-green w-full py-6 shadow-lg z-50 overflow-hidden">
+      <div className="relative px-10 flex justify-between">
         {Object.keys(tab).map((path) => (
           <NavLink
             key={path}
             to={path}
             style={({ isActive }) => ({
-              color: isActive ? "green" : "green",
+              color: isActive ? "green" : "yellow",
             })}
             children={({ isActive, isTransitioning }) => (
               <span className="overflow-hidden flex">
@@ -113,7 +114,7 @@ export const CSBottomNavigation: FC = () => {
                           ease: "easeInOut",
                           delay: 0.2,
                         }}
-                        className="bg-[#d7fdb0] absolute text-xm top-3 left-10 rounded-tr-full rounded-br-full py-1"
+                        // className="bg-[white] absolute text-xm top-3 left-12 rounded-tr-full rounded-br-full py-1"
                       >
                         {tab[path].label}
                       </motion.div>

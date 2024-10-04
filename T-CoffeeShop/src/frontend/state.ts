@@ -1,6 +1,6 @@
 import { atom, selector, selectorFamily } from "recoil";
 import { getPhoneNumber, getUserInfo, getAccessToken } from "zmp-sdk";
-import logo from "static/logo.png";
+import logo from "static/phuminhtam_logo.jpg";
 import { Product, Variant } from "types/product";
 import { Cart } from "types/cart";
 import { Notification } from "types/notification";
@@ -224,7 +224,7 @@ export const recommendProductsState = selector<Product[]>({
   key: "recommendProducts",
   get: ({ get }) => {
     const products = get(productsState);
-    return [...new Array(3)].map(
+    return [...new Array(20)].map(
       () => products[Math.floor(Math.random() * products.length)]
     );
   },

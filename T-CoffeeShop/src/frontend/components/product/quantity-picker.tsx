@@ -1,5 +1,7 @@
 import React, { FC } from "react";
 import { Box, Button, Icon, Text } from "zmp-ui";
+import { FaPlus } from "react-icons/fa";
+import { TiMinus } from "react-icons/ti";
 
 export const QuantityPicker: FC<{
   value: number;
@@ -12,11 +14,7 @@ export const QuantityPicker: FC<{
         onClick={() => onChange(value - 1)}
         variant="secondary"
         type="neutral"
-        icon={
-          <div className="py-3 px-1">
-            <div className="w-full h-[2px] bg-black" />
-          </div>
-        }
+        icon={<TiMinus size={20} className="mx-auto my-auto"/>}
       />
       <Box flex justifyContent="center" alignItems="center" className="flex-1">
         <Text size="large" className="font-medium">
@@ -27,7 +25,7 @@ export const QuantityPicker: FC<{
         onClick={() => onChange(value + 1)}
         variant="secondary"
         type="neutral"
-        icon={<Icon icon="zi-plus" />}
+        icon={<FaPlus size={20} className="mx-auto my-auto"/>}
       />
     </Box>
   );

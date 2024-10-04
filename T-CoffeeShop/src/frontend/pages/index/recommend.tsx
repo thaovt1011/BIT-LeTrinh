@@ -14,6 +14,18 @@ import { Box, Text } from "zmp-ui";
 export const RecommendContent: FC = () => {
   const recommendProducts = useRecoilValue(recommendProductsState);
 
+  const handleCallPrompt = (product) => {
+    if (product.price === -1) {
+      const confirmCall = window.confirm('Vui lòng gọi để biết thêm thông tin về sản phẩm.');
+
+      if (confirmCall) {
+        window.location.href = 'tel:+84937355143'; // Thay số điện thoại bằng số bạn cần
+      }
+      return true; // Trả về true nếu đã xử lý cuộc gọi
+    }
+    return false;
+  };
+
   return (
     <Section title="Gợi ý cho bạn" padding="title-only">
       <Swiper
@@ -27,32 +39,25 @@ export const RecommendContent: FC = () => {
           <SwiperSlide key={product.id}>
             <ProductPicker product={product}>
               {({ open }) => (
-                <div onClick={open} className="space-y-3">
+                <div
+                  onClick={() => {
+                    // Nếu product.price === -1, xử lý cuộc gọi, nếu không mở ProductPicker
+                    if (!handleCallPrompt(product)) {
+                      open();
+                    }
+                  }}
+                  className="space-y-3"
+                >
                   <Box
                     className="relative aspect-video rounded-lg bg-cover bg-center bg-skeleton"
                     style={{ backgroundImage: `url(${product.image})` }}
                   >
-                    {/* {product.sale && (
-                      <Text
-                        size="xxxxSmall"
-                        className="absolute right-2 top-2 uppercase bg-green text-white h-4 px-[6px] rounded-full"
-                      >
-                        Giảm{" "}
-                        {product.sale.type === "percent" ? (
-                          `${product.sale.percent * 100}%`
-                        ) : (
-                          <DisplayPrice>{product.sale.amount}</DisplayPrice>
-                        )}
-                      </Text>
-                    )} */}
+                    {/* Hiển thị thông tin sale nếu có */}
                   </Box>
                   <Box className="space-y-1">
                     <Text size="small">{product.name}</Text>
-                    {/* <Text size="xxSmall" className="line-through text-gray">
-                      <DisplayPrice>{product.price}</DisplayPrice>
-                    </Text> */}
                     <Text size="large" className="font-medium text-green">
-                      <FinalPrice>{product}</FinalPrice>
+                      {product.price === -1 ? "Liên hệ" : <FinalPrice>{product}</FinalPrice>}
                     </Text>
                   </Box>
                 </div>

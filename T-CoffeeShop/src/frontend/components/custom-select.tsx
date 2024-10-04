@@ -8,9 +8,10 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { selectedAddressState } from "../state";
+import { FaChevronCircleDown } from "react-icons/fa";
 
 interface CustomSelectProps {
-  onSaveAddress: (address: string) => void; 
+  onSaveAddress: (address: string) => void;
 }
 
 const CustomSelect: React.FC<CustomSelectProps> = ({ onSaveAddress }) => {
@@ -44,7 +45,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ onSaveAddress }) => {
     const districtName = getNameByCode(selectedDistrict, districts);
     const wardName = getNameByCode(selectedWard, wards);
     const fullAddress = `${streetAddress}, ${wardName}, ${districtName}, ${provinceName}`;
-    
+
     onSaveAddress(fullAddress); // Gọi hàm onSaveAddress khi xác nhận
     navigate("/cart");
   };
@@ -72,12 +73,26 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ onSaveAddress }) => {
   return (
     <Page className="section-container">
       <Box>
+        <label className="">Chọn Thành phố/Tỉnh</label>
+        {/* <select className="select w-full"  onChange={(e) => setSelectedProvince(e.target.value)} >
+          {provinces.map((province) => (
+              <option
+                key={province.code}
+                value={province.code}
+                title={province.name}
+              >
+                {province.name}
+              </option>
+            ))}
+        </select> */}
+
         <Select
-          label="Chọn Thành phố/Tỉnh"
+          // label="Chọn Thành phố/Tỉnh"
           placeholder="Chọn Thành phố/Tỉnh"
           value={selectedProvince}
           onChange={(value: string) => setSelectedProvince(value)}
           closeOnSelect={true}
+          maskCloseable
         >
           {provinces.map((province) => (
             <Option
@@ -88,8 +103,21 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ onSaveAddress }) => {
               {province.name}
             </Option>
           ))}
+          { <FaChevronCircleDown  className="my-auto" size={20}/> }
         </Select>
 
+        {/* <label className="">Chọn Quận/Huyện</label>
+        <select className="select w-full"  onChange={(e) => setSelectedDistrict(e.target.value)} disabled={!selectedProvince}>
+          {districts.map((district) => (
+              <option
+                key={district.code}
+                value={district.code}
+                title={district.name}
+              >
+                {district.name}
+              </option>
+            ))}
+        </select> */}
         <Select
           label="Chọn Quận/Huyện"
           placeholder="Chọn Quận/Huyện"
@@ -109,6 +137,14 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ onSaveAddress }) => {
           ))}
         </Select>
 
+        {/* <label className="">Chọn Phường/Xã</label>
+        <select className="select w-full"  onChange={(e) => setSelectedWard(e.target.value)} disabled={!selectedDistrict}>
+        {wards.map((ward) => (
+            <option key={ward.code} value={ward.code} title={ward.name}>
+              {ward.name}
+            </option>
+          ))}
+        </select> */}
         <Select
           label="Chọn Phường/Xã"
           placeholder="Chọn Phường/Xã"

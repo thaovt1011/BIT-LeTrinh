@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { Box, Header, Text } from "zmp-ui";
 import { useRecoilValueLoadable } from "recoil";
 import { userState } from "state";
-import logo from "static/logo_letrinh.png";
+import logo from "static/phuminhtam_logo.jpg";
 import appConfig from "../../../../app-config.json";
 import { getConfig } from "utils/config";
 
