@@ -60,8 +60,9 @@ app.use(`/bit-letrinh/api/${process.env.API_VERSION}/admin`, adminRouter);
 app.use(`/bit-letrinh/api/${process.env.API_VERSION}/dashboard`, dashboardRouter);
 app.use(`/bit-letrinh/api/${process.env.API_VERSION}/feedback`, feedbackRouter);
 
-app.listen(() => {
-  console.log(
-    `Server is running on host ${process.env.HOST} port ${process.env.PORT}`
-  );
+const host = process.env.HOST || 'localhost';  // Default to 'localhost' if not set
+const port = process.env.PORT || 3000;  // Default to port 3000 if not set
+
+app.listen(port, host, () => {
+  console.log(`Server is running on host ${host} and port ${port}`);
 });
