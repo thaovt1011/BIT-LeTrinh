@@ -44,4 +44,5 @@ export interface Product {
   sale?: Sale;
   variantId: string[];
   variants?: Variant[];
+  isFeatured:Boolean;
 }

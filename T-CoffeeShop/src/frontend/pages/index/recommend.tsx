@@ -10,9 +10,14 @@ import { recommendProductsState } from "state";
 import { Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Box, Text } from "zmp-ui";
+import { FaShoppingCart } from "react-icons/fa";
 
 export const RecommendContent: FC = () => {
   const recommendProducts = useRecoilValue(recommendProductsState);
+
+
+  console.log("recommend 2", recommendProducts);
+  
 
   const handleCallPrompt = (product) => {
     if (product.price === -1) {
@@ -26,6 +31,36 @@ export const RecommendContent: FC = () => {
     return false;
   };
 
+  const addToCart = (pro) => {
+    console.log("Ko ...: ", pro);
+    console.log("Co ...: ", {...pro});
+    
+    if (pro) {
+      setCart((cart) => { // [.....]
+        let res = [...cart];  // res = [.....]
+        const existed = cart.find( // tim trong cart 
+          (item) =>
+            item.product.id === pro.id // dk san pham co ma = voi san pham truyen vao
+        ); // existed = san pham da tim thay
+        if (existed) {
+          res.splice(cart.indexOf(existed), 1, { // xoa san pham cu 
+            ...existed, // them san pham moi
+            quantity: existed.quantity + 1, // voi so luong tang 1 don vi
+          });
+        } else {
+          res.push({
+            product: pro,
+            options: {},
+            quantity: 1
+          });
+        }
+        return res;
+      });
+    }
+    setVisible(false);
+    alertAddToCartSuccessfull();
+  };
+
   return (
     <Section title="Gợi ý cho bạn" padding="title-only">
       <Swiper
@@ -35,7 +70,7 @@ export const RecommendContent: FC = () => {
         autoplay={{ delay: 2000 }}
         modules={[Autoplay]}
       >
-        {recommendProducts.map((product) => (
+        {recommendProducts?.map((product) => (
           <SwiperSlide key={product.id}>
             <ProductPicker product={product}>
               {({ open }) => (
@@ -58,6 +93,8 @@ export const RecommendContent: FC = () => {
                     <Text size="small">{product.name}</Text>
                     <Text size="large" className="font-medium text-green">
                       {product.price === -1 ? "Liên hệ" : <FinalPrice>{product}</FinalPrice>}
+                      
+            <div className=""  onClick={() => addToCart(product)}><FaShoppingCart size={18}/></div>
                     </Text>
                   </Box>
                 </div>

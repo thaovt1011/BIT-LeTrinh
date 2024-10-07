@@ -32,4 +32,9 @@ export const formFields: FormField[] = [
     field: "categoryId",
     type: "mulcbx",
   },
+  {
+    title: "Gợi ý sản phẩm lên trang chủ",
+    field: "isFeatured",
+    type: "chk",
+  },
 ];

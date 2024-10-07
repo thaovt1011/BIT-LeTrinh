@@ -224,9 +224,11 @@ export const recommendProductsState = selector<Product[]>({
   key: "recommendProducts",
   get: ({ get }) => {
     const products = get(productsState);
-    return [...new Array(20)].map(
-      () => products[Math.floor(Math.random() * products.length)]
-    );
+    const recommend = products.filter(products => products.isFeatured === true );
+    
+    return recommend.length > 0 ?  [...new Array(3)].map(
+      () => recommend[Math.floor(Math.random() * recommend.length)]
+    ) : [];
   },
 });
 

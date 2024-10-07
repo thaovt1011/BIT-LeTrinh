@@ -49,7 +49,7 @@ export const useProducts = () => {
           clearSelectedProduct();
           setTimeout(() => {
             refreshProducts();
-          }, 320);
+          }, 500);
         }
       })
       .catch((err) => {
