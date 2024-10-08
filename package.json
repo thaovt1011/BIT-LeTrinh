@@ -19,5 +19,12 @@
   },
   "devDependencies": {
     "cross-env": "^7.0.3"
+  },
+  "scripts": {
+    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
+    "start:device": "concurrently \"npm run start:backend\" \"npm run start:frontend-device\" --kill-others --success first",
+    "start:frontend": "zmp start",
+    "start:frontend-device": "zmp start -D",
+    "start:backend": "nodemon index.js"
   }
 }

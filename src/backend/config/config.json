@@ -10,8 +10,8 @@
   },
   "test": {
     "username": "root",
-    "password": "Vodinhluan2002",
-    "database": "demozalo_schema",
+    "password": "vy123456",
+    "database": "letrinhdb",
     "host": "127.0.0.1",
     "port": 3306,
     "dialect": "mysql",
@@ -24,4 +24,5 @@
     "host": "localhost",
     "dialect": "mysql"
   }
+  
 }

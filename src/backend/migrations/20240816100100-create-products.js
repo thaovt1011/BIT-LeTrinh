@@ -23,7 +23,9 @@ module.exports = {
       },
       active: {
         type: Sequelize.BOOLEAN
-        
+      },
+      isFeatured: {
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,
@@ -33,6 +35,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
+
     });
   },
   async down(queryInterface, Sequelize) {

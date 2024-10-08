@@ -65,7 +65,6 @@ exports.getAdminById = async (req, res) => {
  * @param {Object} req - The request object
  * @param {Object} res - The response object
  * */
-
 exports.updateAdmin = async (req, res) => {
   try {
     const admin = await AdminService.updateAdmin(req.params.id, req.body);

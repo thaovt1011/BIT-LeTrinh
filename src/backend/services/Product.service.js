@@ -115,10 +115,12 @@ exports.getProductById = async (id) => {
     ],
   });
 
+
   const productResponse = product?.toJSON();
   productResponse.categoryId = product.categories.map(
     (category) => category.id
   );
+  console.log();
   productResponse.variantId = product.variants.map((variant) => variant.id);
   delete productResponse.categories;
   delete productResponse.variants;

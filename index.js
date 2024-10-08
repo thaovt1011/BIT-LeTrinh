@@ -17,8 +17,8 @@ const feedbackRouter = require("./src/backend/routes/Feedback.routes")
 
 
 const jwt = require("jsonwebtoken");
-
 dotenv.config();
+
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -60,8 +60,8 @@ app.use(`/bit-letrinh/api/${process.env.API_VERSION}/admin`, adminRouter);
 app.use(`/bit-letrinh/api/${process.env.API_VERSION}/dashboard`, dashboardRouter);
 app.use(`/bit-letrinh/api/${process.env.API_VERSION}/feedback`, feedbackRouter);
 
-app.listen(() => {
+app.listen(process.env.PORT,() => {
   console.log(
-    `Server is running on host ${process.env.HOST} port ${process.env.PORT}`
+    `Server is running on host ${process.env.HOST} port`
   );
 });

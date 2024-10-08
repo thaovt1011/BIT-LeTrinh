@@ -50,6 +50,7 @@ module.exports = (sequelize) => {
         defaultValue: true,
       },
       image: DataTypes.STRING,
+      isFeatured:  DataTypes.BOOLEAN
     },
     {
       sequelize,
