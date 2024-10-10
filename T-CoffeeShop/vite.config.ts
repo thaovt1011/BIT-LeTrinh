@@ -19,6 +19,6 @@ export default () => {
         }),
       },
     ],
-    build: { chunkSizeWarningLimit: 1600 },
+    build: { chunkSizeWarningLimit: 1200 },
   });
 };

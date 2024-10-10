@@ -14,6 +14,7 @@ import { SingleOptionPicker } from "./single-option-picker";
 import { useToBeImplemented } from "hooks/hooks";
 import subscriptionDecor from "static/subscription-decor.svg";
 import { ErrorBoundary } from "react-error-boundary";
+import { Radio } from "react-bootstrap";
 
 export interface ProductPickerProps {
   product?: Product;
@@ -145,14 +146,14 @@ export const RenderProductPicker: FC<ProductPickerProps> = ({
       {createPortal(
         <Sheet visible={visible} onClose={() => setVisible(false)} autoHeight>
           {product && (
-            <Box className="space-y-6 mt-2" p={4}>
+            <Page className="space-y-2 mt-1 mx-1">
               <Box className="space-y-2">
                 <Text.Title>{product.name}</Text.Title>
                 <Text>
                   <FinalPrice options={options}>{product}</FinalPrice>
                 </Text>
-                <Text>
-                  <div
+                <Text >
+                  <div className=" justify-between mx-2 overflow-y-auto overflow-x-hidden max-h-56" 
                     dangerouslySetInnerHTML={{
                       __html: product.description ?? "",
                     }}
@@ -173,7 +174,7 @@ export const RenderProductPicker: FC<ProductPickerProps> = ({
                             [variant.id]: selectedOption,
                           }))
                         }
-                      />
+                      />  
                     ) : (
                       <MultipleOptionPicker
                         key={variant.id}
@@ -215,7 +216,7 @@ export const RenderProductPicker: FC<ProductPickerProps> = ({
                   </Button>
                 )}
               </Box>
-            </Box>
+            </Page>
           )}
         </Sheet>,
         document.body

@@ -75,7 +75,7 @@ export const RecommendContent: FC = () => {
             <ProductPicker product={product}>
               {({ open }) => (
                 <div
-                  onClick={() => {
+                   onClick={() => {
                     // Nếu product.price === -1, xử lý cuộc gọi, nếu không mở ProductPicker
                     if (!handleCallPrompt(product)) {
                       open();
@@ -91,10 +91,10 @@ export const RecommendContent: FC = () => {
                   </Box>
                   <Box className="space-y-1">
                     <Text size="small">{product.name}</Text>
-                    <Text size="large" className="font-medium text-green">
+                    <Text size="large" className="font-medium text-green pb-2 flex justify-between items-center px-2">
                       {product.price === -1 ? "Liên hệ" : <FinalPrice>{product}</FinalPrice>}
                       
-            <div className=""  onClick={() => addToCart(product)}><FaShoppingCart size={18}/></div>
+                      <div className=""  onClick={() => addToCart(product)}><FaShoppingCart size={18}/></div>
                     </Text>
                   </Box>
                 </div>
@@ -130,3 +130,15 @@ export const Recommend: FC = () => {
     </Suspense>
   );
 };
+function setCart(arg0: (cart: any) => any[]) {
+  throw new Error("Function not implemented.");
+}
+
+function setVisible(arg0: boolean) {
+  throw new Error("Function not implemented.");
+}
+
+function alertAddToCartSuccessfull() {
+  throw new Error("Function not implemented.");
+}
+
