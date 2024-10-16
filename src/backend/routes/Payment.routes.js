@@ -4,7 +4,7 @@ const { protect } = require("../middlewares/authenMiddleware.js");
 
 router.get("/", paymentController.getAllPayments);
 router.get("/:id", paymentController.getPaymentById);
-router.post("/", protect, paymentController.createPayment);
+router.post("/", paymentController.createPayment);
 router.put("/:id", protect, paymentController.updatePayment);
 router.delete("/:id", protect, paymentController.deletePayment);
 

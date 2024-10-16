@@ -10,8 +10,8 @@
   },
   "test": {
     "username": "root",
-    "password": "",
-    "database": "",
+    "password": "Vodinhluan2002",
+    "database": "demozalo_schema",
     "host": "127.0.0.1",
     "port": 3306,
     "dialect": "mysql",
