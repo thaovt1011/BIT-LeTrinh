@@ -27,15 +27,18 @@ export const ManageFormTab = () => {
         onCSSubmit
         btnSubmit={
           <div className="flex gap-x-5">
-            <button
-              type="button"
-              onClick={() => {
-                updateOrderStatus(selectedOrder.id, "SUCCESS");
-              }}
-              className="btn btn-neutral"
-            >
-              Approved
-            </button>
+            {
+              (selectedOrder as any)?.payment?.status != "SUCCESS" && <button
+                type="button"
+                onClick={() => {
+                  updateOrderStatus(selectedOrder.id, "SUCCESS");
+                }}
+                className="btn btn-neutral"
+              >
+                Approved
+              </button>
+            }
+           
 
             <button
               type="button"

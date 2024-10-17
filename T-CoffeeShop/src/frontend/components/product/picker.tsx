@@ -14,7 +14,7 @@ import { SingleOptionPicker } from "./single-option-picker";
 import { useToBeImplemented } from "hooks/hooks";
 import subscriptionDecor from "static/subscription-decor.svg";
 import { ErrorBoundary } from "react-error-boundary";
-import { Radio } from "react-bootstrap";
+// import { Radio } from "react-bootstrap";
 
 export interface ProductPickerProps {
   product?: Product;

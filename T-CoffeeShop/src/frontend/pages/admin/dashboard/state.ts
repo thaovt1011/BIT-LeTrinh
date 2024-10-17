@@ -4,8 +4,14 @@ import { productsState } from "state";
 
 export const getYearReveneState = selector<any>({
   key: "getYearReveneState",
-  get: async () => await DashBoardService.getYearRevenue(),
-});
+  get: async () => await DashBoardService.getYearRevenue().then((res) => {
+    return (res as any).map((val) => {
+      let successOrder = val.paymentReport.filter(subVal => subVal.status == "SUCCESS")
+      return {...val, totalOrders: successOrder[0]?.totalPayments,totalRevenue: successOrder.reduce((sum, re) => {
+        return sum + re.totalRevenue
+      },0)}
+    })
+  }),});
 
 export const getYearReveneTotalState = selector<number>({
   key: "getYearReveneTotalState",
