@@ -74,20 +74,15 @@ export const ProductItem: FC<{ product: Product }> = ({ product }) => {
       {({ open }) => (  
         <div className="space-y-2" >
           <Box className="w-full aspect-square relative">
-            <img onClick={() => handleclick(open)}
-              loading="lazy"
-              src={product.image}
+            <img onClick={() => handleclick(open)} loading="lazy" src={product.image}
               className="absolute left-0 right-0 top-0 bottom-0 w-full h-full object-cover object-center rounded-lg bg-skeleton"
             />
           </Box>
           <Text style={styles.productName}>{product.name}</Text>
           <Text size="xSmall" className="text-green pb-2 flex justify-between items-center px-2">
-            {product.price === -1 ? (
-              "Liên hệ"
-            ) : (
-              <FinalPrice>{product}</FinalPrice> 
-            )}
-            <div className=""  onClick={() => addToCart(product)}><FaShoppingCart size={18}/></div>
+            {product.price === -1 ? ( "Liên hệ" ) : ( <FinalPrice>{product}</FinalPrice>)}
+            
+            <div className=""  onClick={() => handleclick(() => addToCart(product))}><FaShoppingCart size={18}/></div>
           </Text>
         </div>
       )}

@@ -76,7 +76,6 @@ export const RecommendContent: FC = () => {
               {({ open }) => (
                 <div
                    onClick={() => {
-                    // Nếu product.price === -1, xử lý cuộc gọi, nếu không mở ProductPicker
                     if (!handleCallPrompt(product)) {
                       open();
                     }
@@ -94,7 +93,7 @@ export const RecommendContent: FC = () => {
                     <Text size="large" className="font-medium text-green pb-2 flex justify-between items-center px-2">
                       {product.price === -1 ? "Liên hệ" : <FinalPrice>{product}</FinalPrice>}
                       
-                      <div className=""  onClick={() => addToCart(product)}><FaShoppingCart size={18}/></div>
+                      <div className=""   onClick={() => handleCallPrompt(() => addToCart(product))}><FaShoppingCart size={18}/></div>
                     </Text>
                   </Box>
                 </div>
