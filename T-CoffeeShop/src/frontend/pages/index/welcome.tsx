@@ -1,13 +1,19 @@
 import React, { FC } from "react";
 import { Box, Header, Text } from "zmp-ui";
-import { useRecoilValueLoadable } from "recoil";
-import { userState } from "state";
+import { useRecoilValue, useRecoilValueLoadable } from "recoil";
 import logo from "static/logo_letrinh.png";
 import appConfig from "../../../../app-config.json";
 import { getConfig } from "utils/config";
+import { userCurrentState } from "state";
 
 export const Welcome: FC = () => {
-  const user = useRecoilValueLoadable(userState);
+  const userCurrent = useRecoilValue(userCurrentState);
+  const welcomeMessage = "Xin chào";
+
+  const displayName = userCurrent?.name
+    ? `${userCurrent.name}`
+    : "Người dùng mới";
+
 
   return (
     <Header
@@ -22,13 +28,9 @@ export const Welcome: FC = () => {
             />
             <Box>
               <Text.Title size="small">{appConfig.app.title}</Text.Title>
-              {user.state === "hasValue" ? (
-                <Text size="xxSmall" className="text-gray">
-                  Welcome, {user.contents.name}!
-                </Text>
-              ) : (
-                <Text>...</Text>
-              )}
+              <Text size="xxSmall" className="text-gray">
+                {welcomeMessage}, {displayName}!
+              </Text>
             </Box>
           </Box>
         ) as unknown as string

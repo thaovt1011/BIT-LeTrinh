@@ -4,16 +4,15 @@ import { Page, Header, Box, Text, Icon } from "zmp-ui";
 import CustomSelect from "../../components/custom-select";
 import { ListRenderer } from "components/list-renderer";
 import { useSetRecoilState, useRecoilValue } from "recoil";
-import { selectedAddressState } from "state";
+import { selectedAddressState, userCurrentState } from "state";
 import { OrderService } from "api/services/order.service";
-import { userState } from "state";
 
 export const NewAddress: React.FC = () => {
   const navigate = useNavigate();
   const setSelectedAddress = useSetRecoilState(selectedAddressState);
   const [selectedAddresses, setSelectedAddresses] = useState<string[]>([]);
 
-  const user = useRecoilValue(userState);
+  const user = useRecoilValue(userCurrentState);
 
   useEffect(() => {
     const fetchAddresses = async () => {

@@ -4,10 +4,8 @@ import {
   fetchProvinces,
   fetchDistrictsByProvince,
   fetchWardsByDistrict,
-} from "../data-province";
+} from "../data_province";
 import { useNavigate } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
-import { selectedAddressState } from "../state";
 
 interface CustomSelectProps {
   onSaveAddress: (address: string) => void; 
@@ -29,8 +27,6 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ onSaveAddress }) => {
   const { Option } = Select;
 
   const navigate = useNavigate();
-  const setSelectedAddress = useSetRecoilState(selectedAddressState);
-
   const getNameByCode = (
     code: string,
     list: { code: string; name: string }[]
@@ -45,26 +41,29 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ onSaveAddress }) => {
     const wardName = getNameByCode(selectedWard, wards);
     const fullAddress = `${streetAddress}, ${wardName}, ${districtName}, ${provinceName}`;
     
-    onSaveAddress(fullAddress); // Gọi hàm onSaveAddress khi xác nhận
+    onSaveAddress(fullAddress); 
     navigate("/cart");
   };
 
   useEffect(() => {
-    fetchProvinces().then((data) => setProvinces(data));
+    fetchProvinces().then((data) => {
+      console.log(data);
+      setProvinces(Object.values(data));
+    } );
   }, []);
 
   useEffect(() => {
     if (selectedProvince) {
       fetchDistrictsByProvince(selectedProvince).then((data) =>
-        setDistricts(data.districts)
+        setDistricts(Object.values(data))
       );
     }
   }, [selectedProvince]);
 
   useEffect(() => {
     if (selectedDistrict) {
-      fetchWardsByDistrict(selectedDistrict).then((data) =>
-        setWards(data.wards)
+      fetchWardsByDistrict(selectedDistrict, selectedProvince).then((data) =>
+        setWards(Object.values(data))
       );
     }
   }, [selectedDistrict]);

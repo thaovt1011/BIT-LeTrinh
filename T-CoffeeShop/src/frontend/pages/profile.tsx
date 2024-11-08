@@ -15,6 +15,7 @@ import { authenticationState,
 } from "state";
 import { CustomerService } from "api/services/customer.service";
 import { Subscription } from "../components/subscription"
+import { getUserInfo } from "zmp-sdk";
 
 const listRender = (handle, navigate, isAdmin) => {
   const items = [
@@ -92,43 +93,85 @@ const Personal: FC<PersonalProps> = ({ setLoading }) => {
   const navigate = useNavigate();
   const getAuth = useRecoilValue(authenticationState);
   const accessToken = useRecoilValueLoadable(accessTokenState);
+  const setAuthentication = useSetRecoilState(authenticationState);
+
   let { contents } = accessToken;
   const userCurrent = useRecoilValue(userCurrentState);
   const setUserCurrent = useSetRecoilState(userCurrentAtom);
 
-  const handleUserInfo = () => {
-    setLoading(true); // Trigger loading for the whole page
+  const handleRequestPermission = async () => {
+    try {
+      const userInfo = await getUserInfo({ autoRequestPermission: true });
+      const name = userInfo.userInfo.name;
+      console.log('ten ne pa: ', name);
+      
 
-    let { id, phone_number } = userCurrent;
-    if (phone_number) {
-      setLoading(false); 
-      navigate("/info_user");
-    } else {
-      getPhonenumber(contents)
-        .then((res) => {
-          const updatedUser = { ...userCurrent, phone_number: res };
+      setUserCurrent({
+        ...userCurrent,
+        id: userInfo.userInfo.id,
+        name: name
+      });
+
+      const phone = await getPhonenumber(contents);
+
+      const updatedUser = { ...userCurrent, phone_number: phone };
           setUserCurrent(updatedUser);
+          
 
           (async () => {
             try {
-              await CustomerService.update({
-                id: id,
+              const updateResponse = await CustomerService.update({
+                id: updatedUser.id,
                 name: updatedUser.name,
-                phone_number: res,
+                phone_number: phone,
               });
+
+              if (!updateResponse) {
+                if (userCurrent?.id) {
+                  const { id, name } = userCurrent;
+            
+                  console.log('Saving user to DB: ', { id, name });
+                  (async () => {
+                    await CustomerService.create({
+                      id,
+                      name
+                    });
+                  })();
+            
+                  (async () => {
+                    await CustomerService.auth(
+                      id,
+                      import.meta.env.VITE_APP_ID,
+                      setAuthentication
+                    );
+                  })();
+                }
+              }
+
+              
               setUserCurrent(updatedUser);
-              setLoading(false); // Stop loading after success
+              setLoading(false); 
               navigate("/info_user");
             } catch (error) {
-              setLoading(false); // Stop loading if error
+              setLoading(false); 
               console.error("Update error:", error);
             }
           })();
-        })
-        .catch((err) => {
-          setLoading(false); 
-          console.error("API error:", err);
-        });
+
+    } catch (error) {
+      console.error("Error fetching user info or phone number:", error);
+    }
+  };
+
+  const handleUserInfo = () => {
+    // setLoading(true);
+
+    let { name, phone_number } = userCurrent;
+    if (name && phone_number) {
+      setLoading(false); 
+      navigate("/info_user");
+    } else {
+      handleRequestPermission()
     }
   };
 
