@@ -93,51 +93,44 @@ getUserInfo({
 });
 
 
-// export const userState = selector({
-//   key: "user",
-//   get: async () => {
-//     try {
-//       const { userInfo } = await getUserInfo({ autoRequestPermission: true });
-//       return userInfo;
-//     } catch (error) {
-//       return {
-//         id: "",
-//         avatar: "",
-//         name: "Người dùng Zalo",
-//       };
-//     }
-//   },
-// });
-
-export const getUserCurrent = async (): Promise<Customer> => {
-  const userInfo = await getUserInfo();
-  await getAccessToken();
-  const name = userInfo.userInfo.name || "";
-  const phone_number = "";
-
-  return {
-    id: userInfo.userInfo.id,
-    name,
-    phone_number,
-  };
-};
+export const userState = selector({
+  key: "user",
+  get: async () => {
+    try {
+      const { userInfo } = await getUserInfo({ autoRequestPermission: true });
+      return userInfo;
+    } catch (error) {
+      return {
+        id: "",
+        avatar: "",
+        name: "Người dùng Zalo",
+      };
+    }
+  },
+});
 
 // const getUserCurrent = async () => {
-//   try {
-//     const userInfo = { ...(await getUserInfo({ autoRequestPermission: true })).userInfo };
-//     await getAccessToken();
-//     return userInfo;
-//   } catch (error) {
-//     console.error("Error getting user info or access token:", error);
-//     return {
-//       id: "",
-//       avatar: "",
-//       name: "Người dùng Zalo",
-//     };
-//   }
+//   var userInfor = { ...(await getUserInfo()).userInfo };
+//   await getAccessToken();
+//   return userInfor;
 // };
 
-export const userCurrentAtom = atom<Customer>({
+const getUserCurrent = async () => {
+  try {
+    const userInfo = { ...(await getUserInfo({ autoRequestPermission: true })).userInfo };
+    await getAccessToken();
+    return userInfo;
+  } catch (error) {
+    console.error("Error getting user info or access token:", error);
+    return {
+      id: "",
+      avatar: "",
+      name: "Người dùng Zalo",
+    };
+  }
+};
+
+export const userCurrentAtom = atom({
   key: "userCurrentAtom",
   default: getUserCurrent() as Promise<Customer>,
 });

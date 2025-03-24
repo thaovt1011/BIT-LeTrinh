@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Box, Header, Page } from "zmp-ui";
 import { PageWrapper } from "components/page-wrapper";
 import { CSLineChart } from "./line-chart";
-import { useRecoilRefresher_UNSTABLE, useRecoilValueLoadable } from "recoil";
+import { useRecoilValueLoadable } from "recoil";
 import {
   getYearDiscountAmountTotalState,
   getYearDiscountsAppliedTotalState,
@@ -22,12 +22,6 @@ export const DashBoardPage = () => {
   const yearDiscountAmountTotal = useRecoilValueLoadable(
     getYearDiscountAmountTotalState
   );
-
-  const refreshYearRevenueTotal = useRecoilRefresher_UNSTABLE(getYearReveneTotalState)
-
-  useEffect(() => {
-    refreshYearRevenueTotal();
-  },[])
 
   let { state, contents } = yearDiscountAmountTotal;
   if (state === "hasValue")

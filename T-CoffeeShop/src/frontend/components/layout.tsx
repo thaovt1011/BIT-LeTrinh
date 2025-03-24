@@ -22,6 +22,7 @@ import { DiscountManagePage } from "pages/admin/discount";
 import { NewAddress } from "pages/cart/new-address";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { authenticationState, cartState, userCurrentState } from "state";
+import { CustomerService } from "api/services/customer.service";
 import InfoUserPage from "pages/info_user";
 import { EventName, events } from "zmp-sdk/apis";
 import ContactPage from "pages/contact";
@@ -38,32 +39,32 @@ if (getSystemInfo().platform === "android") {
 }
 
 export const Layout: FC = () => {
-  // const userCurrent = useRecoilValue(userCurrentState);
+  const userCurrent = useRecoilValue(userCurrentState);
   const setCart = useRecoilValue(cartState);
   const setAuthentication = useSetRecoilState(authenticationState);
 
-  // useEffect(() => {
-  //   // Chỉ thực hiện lưu thông tin nếu user đã có ID, tức là đã có thông tin
-  //   if (userCurrent?.id) {
-  //     const { id, name } = userCurrent;
+  useEffect(() => {
+    // Chỉ thực hiện lưu thông tin nếu user đã có ID, tức là đã có thông tin
+    if (userCurrent?.id) {
+      const { id, name } = userCurrent;
 
-  //     console.log('Saving user to DB: ', { id, name });
-  //     (async () => {
-  //       await CustomerService.create({
-  //         id,
-  //         name
-  //       });
-  //     })();
+      console.log('Saving user to DB: ', { id, name });
+      (async () => {
+        await CustomerService.create({
+          id,
+          name
+        });
+      })();
 
-  //     (async () => {
-  //       await CustomerService.auth(
-  //         id,
-  //         import.meta.env.VITE_APP_ID,
-  //         setAuthentication
-  //       );
-  //     })();
-  //   }
-  // }, [userCurrent, setAuthentication]);
+      (async () => {
+        await CustomerService.auth(
+          id,
+          import.meta.env.VITE_APP_ID,
+          setAuthentication
+        );
+      })();
+    }
+  }, [userCurrent, setAuthentication]);
 
 
   useEffect(() => {
